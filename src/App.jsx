@@ -3,6 +3,8 @@ import Main from "./Main/Main"
 import Apply from "./Components/Apply/Apply"
 import Blog from "./Components/Blog/Blog"
 import Home from "./Components/Home/Home"
+import ErrorPage from "./Components/ErrorPage/ErrorPage"
+import JobDetails from "./Components/Jobs/JobDetails"
 
 
 function App() {
@@ -10,6 +12,7 @@ function App() {
   {
   path:'/',
   element:<Main></Main>,
+  errorElement:<ErrorPage></ErrorPage>,
   children:[
     {
       path:'/',
@@ -23,6 +26,11 @@ function App() {
       path:'/blogs',
       element:<Blog></Blog>
     },
+    {
+      path:'/jobs/:jobId',
+      element:<JobDetails></JobDetails>,
+      loader:({params})=>fetch(`https://next-level-two-ashen.vercel.app/jobs/${params.jobId}`)
+    }
   ]
  }
 ])
