@@ -20,6 +20,7 @@ function App() {
     },
     {
       path:'/apply',
+      loader:()=>fetch(`https://next-level-two-ashen.vercel.app/jobs`),
       element:<Apply></Apply>
     },
     {
