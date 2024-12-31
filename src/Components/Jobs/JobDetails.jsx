@@ -1,5 +1,5 @@
 import React from "react";
-import { useLoaderData } from "react-router-dom";
+import { useLoaderData, useNavigate } from "react-router-dom";
 import { ToastContainer, toast } from "react-toastify";
 import { getDataFromLocalStorage, setDataToLocalStorage } from "../../LocalStorage/LocalStorage";
 
@@ -20,11 +20,14 @@ const JobDetails = () => {
     skills,
   } = values;
   console.log(values);
+  const navigate = useNavigate()
+
   const handleSubmit = () => {
     const data = getDataFromLocalStorage()
     const exists =data.find(da=>da == _id)
     if(!exists){
       setDataToLocalStorage(_id);
+      navigate('/apply')
       toast("Applied Successfully");
     }
    else{

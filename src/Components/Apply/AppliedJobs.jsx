@@ -1,7 +1,9 @@
 import React from "react";
+import { deleteDataFromLocalStorage } from "../../LocalStorage/LocalStorage";
 
-const AppliedJobs = ({ local }) => {
-  const { image, job_title, jobSummary } = local;
+const AppliedJobs = ({local,handleDelete}) => {
+  const {_id,image, job_title, jobSummary, location} = local;
+ 
   return (
     <div>
       <div className="mt-10">
@@ -14,8 +16,9 @@ const AppliedJobs = ({ local }) => {
             <div>
               <h1 className="text-5xl font-bold">{job_title}</h1>
               <p className="py-6">{jobSummary}</p>
+              <p>{location}</p>
               <div className="text-end">
-                <button className="btn btn-primary">Delete</button>
+                <button className="btn btn-primary px-10" onClick={()=>handleDelete(_id)}>Delete</button>
               </div>
             </div>
           </div>

@@ -13,5 +13,12 @@ const setDataToLocalStorage=(id)=>{
         localStorage.setItem('application-details',JSON.stringify(data))
     }
 }
-
-export {getDataFromLocalStorage,setDataToLocalStorage}
+const deleteDataFromLocalStorage=(id)=>{
+    const data = getDataFromLocalStorage()
+    const filterData = data.filter(da=>da !== id)
+    if(filterData){
+        localStorage.setItem('application-details',JSON.stringify(filterData))
+    }
+} 
+    
+export {getDataFromLocalStorage,setDataToLocalStorage,deleteDataFromLocalStorage}
